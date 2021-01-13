@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import firebase from '../config/Firebase'
+import firebase from '../config.js/Firebase'
+
 function SignUp(props) {
         const [name, setName] = useState('')
         const [education, setEducation] = useState('')

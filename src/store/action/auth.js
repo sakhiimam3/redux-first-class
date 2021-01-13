@@ -1,5 +1,5 @@
 import { CHANGE_USER_NAME, UPATE_USER_INFO } from '../constant/index';
-import firebase from '../../config/Firebase'
+import firebase from '../../config.js/Firebase'
 export function changeUserName() {
     return dispatch => dispatch({ type: CHANGE_USER_NAME, payload: 'Ali' })
 

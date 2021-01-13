@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Router from './config/Router'
+import Router from './config.js/Router'
 import firebase from 'firebase'
 import { Provider } from 'react-redux'
 import store from './store'

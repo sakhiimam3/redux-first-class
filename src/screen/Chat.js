@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import { connect } from 'react-redux'
 
 function Chat(props) {
@@ -16,6 +16,6 @@ const mapStateToProps = (state /*, ownProps*/) => {
     }
 }
 
-const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chat)
+
+export default connect(mapStateToProps, null)(Chat)
