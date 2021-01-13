@@ -1,9 +1,7 @@
-const INITIAL_STATE={
-    name:"baba",
-}
+  
+import auth from './auth'
+import { combineReducers } from 'redux'
 
-
-
-export default (state=INITIAL_STATE)=>{
-         return state;
-}
+export default combineReducers({
+    auth: auth
+})

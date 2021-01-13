@@ -1,7 +1,40 @@
-import React from "react"
-const Error = () =>{
-  return(
-          <div >hello,i am a Error page </div>
-  )
-};
-   export default Error;
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+
+
+import { loginUser } from '../store/action/auth'
+
+const Login=(props) =>{
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const loginUser = () => {
+        if (email != '' && password !== '') {
+            props.loginUser(email, password)
+        } else {
+            alert('Enter proper details')
+        }
+
+    }
+
+
+    const goToRegister = () => props.history.push('/signup')
+    return (
+        <div>
+            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder={'email'} />
+            <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder={'password'} type={"password"} />
+            <button onClick={goToRegister}>Register</button>
+
+            <button onClick={loginUser}>login</button>
+        </div>)
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return ({
+        loginUser: (email, password) => { dispatch(loginUser(email, password)) }
+    })
+}
+
+export default connect(null, mapDispatchToProps)(Login)

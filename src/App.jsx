@@ -1,99 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import './App.css';
-import   { connect } from "react-redux"
-import { set_data } from "../src/store/action"
+import React, { useState, useEffect } from 'react'
+import Router from './config/Router'
+import firebase from 'firebase'
+import { Provider } from 'react-redux'
+import store from './store'
 
+function App() {
 
-
-function App(props) {
-  const [todo, setTodo] = useState('')
-  const [allTodos, setAllTodos] = useState([])
-  const [edit, setEdit] = useState(false)
-
-
-
-  const submitTodo = () => {
-    if (todo === '') {
-      alert('Please enter some thing')
-    } else {
-      setAllTodos([todo, ...allTodos])
-      setTodo('')
-        
-    }
-  }
-
-  const deleteTodo = (index) => {
-    let arr = allTodos
-    arr.splice(index, 1)
-    setAllTodos([...arr])
-  }
-
-  const editTodo = (todo, index) => {
-    setEdit(true);
-    // var updatedTodo = prompt('Todo', todo)
-    // let arr = allTodos
-    // arr[index] = updatedTodo
-    // setAllTodos([...arr])
-  }
-
-  
-
+  // Initialize Firebase
   return (
-    
-        
-    <div className="App">
-      
-      <div>
-               <button onClick={()=>props.set_data()}>check state</button>          
-        <input type={'text'} value={todo}
-          placeholder={'Enter Todo'}
-          onChange={(e) => setTodo(e.target.value)} />
-        <button onClick={submitTodo}>Add Item </button>
-      </div>
-      <div>
-        {
-          allTodos.map((todo, index) => {
-            return (
-              <div> {edit ? <input value={todo} /> : <span> {todo} </span>}
-                {
-                  edit ?
-                    <button  title={"Save"} >Save</button>
-                    :
-                    <button onClick={() => editTodo(todo, index)} >Edit </button>
-                }
-                <button onClick={() => deleteTodo(index)} >Delete </button>
-              </div>
-            )
-          })
-        }
-      </div>
-                
-    </div>
+    <Provider store={store}>
+      <Router />
+    </Provider>
   );
 }
 
-  const mapStateToProps=(state)=> {
-   return (   
-  {
-      name:state.name,
-      email:"sakhidad@gmail.com"
-      
-  }
-
-   )
-
-}
-
-
-  const mapDispatchToProp=(dispatch)=>({
-       set_data:() =>set_data()
-
-       
-  })
-
-export default  connect(mapStateToProps,mapDispatchToProp) (App);
-
-
+export default App;
 
 // import About from "./screen/About"
 // import Home from "./screen/Home"

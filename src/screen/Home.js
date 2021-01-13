@@ -1,7 +1,14 @@
 import React from "react"
- const Home = () =>{
+ const Home = (props) =>{
+  const gotosignup=()=>{
+               props.history.push('/SignUp')
+  }
    return(
-           <div > <h1>this is a home </h1> </div>
+       
+           <div >
+             
+                     <button onClick={gotosignup}>Go to sign up</button>
+              </div>
    )
  };
     export default Home;
